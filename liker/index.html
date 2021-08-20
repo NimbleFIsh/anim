@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="charset" content="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Liker</title>
+        <meta name="author" content="NimbleFish" />
+        <style>
+            * {
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+            }
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            #liker_container { position: relative; }
+            #liker {
+                margin: auto 0;
+                width: 80px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: red;
+                color: #fff;
+                border-radius: 5px;
+                cursor: pointer;
+                user-select: none;
+            }
+            .like {
+                background-image: url(./heart.svg);
+                background-repeat: no-repeat;
+                height: 24px;
+                width: 24px;
+                position: absolute;
+                right: 35%;
+                top: -10px;
+                z-index: 100;
+                user-select: none;
+                cursor: default;
+            }
+            .tr {
+                animation-duration: .5s;
+                animation-timing-function: linear;
+                animation-fill-mode: none;
+                animation-iteration-count: 1;
+                animation-direction: normal;
+                animation-play-state: running;
+            }
+            .tr0 { animation-name: tr0; }
+            .tr1 { animation-name: tr1; }
+            .tr2 { animation-name: tr2; }
+            .tr3 { animation-name: tr3; }
+
+            @keyframes tr0 {
+                0% {
+                    opacity: 1;
+                    top: -10px;
+                    left: 35%;
+                    right: 35%;
+                }
+
+                20% {
+                    opacity: .8;
+                    top: -50px;
+                    left: -50px;
+                }
+
+                40% {
+                    opacity: .6;
+                    top: -100px;
+                    left: 35%;
+                    right: 35%;
+                }
+
+                60% {
+                    opacity: .4;
+                    top: -150px;
+                    left: 100%;
+                }
+                
+                80% {
+                    opacity: .2;
+                    top: -200px;
+                    right: 35%;
+                    left: 35%;
+                }
+
+                100% {
+                    opacity: 0;
+                    top: -200px;
+                }
+            }
+            @keyframes tr1 {
+                0% {
+                    opacity: 1;
+                    top: -10px;
+                    left: 35%;
+                    right: 35%;
+                }
+
+                20% {
+                    opacity: .8;
+                    top: -50px;
+                    left: 35%;
+                    right: 35%;
+                }
+
+                40% {
+                    opacity: .6;
+                    top: -100px;
+                    left: 100%;
+                }
+
+                60% {
+                    opacity: .4;
+                    top: -150px;
+                    left: -50px;
+                }
+                
+                80% {
+                    opacity: .2;
+                    top: -200px;
+                    right: 35%;
+                    left: 35%;
+                }
+
+                100% {
+                    opacity: 0;
+                    top: -200px;
+                }
+            }
+            @keyframes tr2 {
+                0% {
+                    opacity: 1;
+                    top: -10px;
+                    left: 35%;
+                    right: 35%;
+                }
+
+                20% {
+                    opacity: .8;
+                    top: -50px;
+                    left: 35%;
+                    right: 35%;
+                }
+
+                40% {
+                    opacity: .6;
+                    top: -100px;
+                    left: -50px;
+                }
+
+                60% {
+                    opacity: .4;
+                    top: -150px;
+                    left: 100%;
+                }
+
+                80% {
+                    opacity: .2;
+                    top: -200px;
+                    right: 35%;
+                    left: 35%;
+                }
+
+                100% {
+                    opacity: 0;
+                    top: -200px;
+                }
+            }
+            @keyframes tr3 {
+                0% {
+                    opacity: 1;
+                    top: -10px;
+                    left: 35%;
+                    right: 35%;
+                }
+
+                20% {
+                    opacity: .8;
+                    top: -50px;
+                    left: 100%;
+                }
+
+                40% {
+                    opacity: .6;
+                    top: -100px;
+                    left: 35%;
+                    right: 35%;
+                }
+
+                60% {
+                    opacity: .4;
+                    top: -150px;
+                    left: -50px;
+                }
+                
+                80% {
+                    opacity: .2;
+                    top: -200px;
+                    right: 35%;
+                    left: 35%;
+                }
+
+                100% {
+                    opacity: 0;
+                    top: -200px;
+                }
+            }
+        </style>
+        <script type="text/javascript">
+            window.addEventListener('load', () => {
+                document.getElementById('liker').addEventListener('click', e => {
+                    const like = document.createElement('div');
+                    like.classList.add('like');
+                    like.classList.add('tr');
+                    like.classList.add('tr' + Math.floor(Math.random() * 4));
+                    document.getElementById('liker_container').insertAdjacentElement('afterbegin', like);
+                    document.getElementById('liker_container').children[0].addEventListener('animationend', el => el.target.remove());
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="liker_container">
+            <div id="liker">Like</div>
+        </div>
+    </body>
+</html>
